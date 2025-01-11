@@ -1,0 +1,54 @@
+@font-face {
+  font-display: swap;
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/static/fonts/noto-sans-v38-cyrillic_latin-regular.woff2') format('woff2'); 
+  font-stretch: 75% 125%;
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 900;
+  src: url('/static/fonts/noto-sans-v38-cyrillic_latin-900.woff2') format('woff2');
+  font-stretch: 75% 125%;
+}
+
+html {
+  font-family: "Noto Sans";
+}
+
+:root {
+  --ifm-color-primary: #006ba4;
+  --ifm-color-primary-dark: #006094;
+  --ifm-color-primary-darker: #005b8b;
+  --ifm-color-primary-darkest: #004b73;
+  --ifm-color-primary-light: #006fab;
+  --ifm-color-primary-lighter: #0075b3;
+  --ifm-color-primary-lightest: #0078b8;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+
+html[data-theme='dark'] {
+  --ifm-color-primary: #249edb;
+  --ifm-color-primary-dark: #2fa3dd;
+  --ifm-color-primary-darker: #45ade0;
+  --ifm-color-primary-darkest: #50b1e2;
+  --ifm-color-primary-light: #3aa8df;
+  --ifm-color-primary-lighter: #45ade0;
+  --ifm-color-primary-lightest: #66bbe6;
+  --ifm-background-color: #212835;
+  --ifm-navbar-background-color: #303846;
+  --ifm-card-background-color: #232731;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+html[data-theme='dark'] .navbar:not(.navbar-sidebar--show) {
+  /* opacity: .7; */
+  --ifm-navbar-background-color: #303846ab;
+  backdrop-filter: blur(7px);
+}
