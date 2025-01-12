@@ -36,6 +36,7 @@ jobs:
 
       - name: Deploy with rsync
         run: |
-          rsync -avz -e "ssh -p ${{ secrets.SERVER_SSH_PORT }} \
+          rsync -avz \
+          -e "ssh -p ${{ secrets.SERVER_SSH_PORT }} -o StrictHostKeyChecking=no" \
           --delete ./build/ \
           ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOST }}:/var/www/apps/style-guide/
