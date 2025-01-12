@@ -1,0 +1,38 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build
+
+      - name: Install SSH Key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          known_hosts: ${{ secrets.SERVER_KNOWN_HOSTS }}
+          if_key_exists: replace
+
+      - name: Adding Known Hosts
+        run: ssh-keyscan -H -p ${{ secrets.SERVER_SSH_PORT }} ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Deploy with rsync
+        run: rsync -avz --delete ./build/ ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOST }}:/var/www/apps/style-guide/
