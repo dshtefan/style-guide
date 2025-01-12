@@ -30,13 +30,14 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           known_hosts: unnecessary
           if_key_exists: replace
-
-      - name: Adding Known Hosts
-        run: ssh-keyscan -H -p ${{ secrets.SERVER_SSH_PORT }} ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
+          config: |
+            Host *
+              StrictHostKeyChecking no
 
       - name: Deploy with rsync
         run: |
-          sudo rsync -avz \
-          -e "ssh -p ${{ secrets.SERVER_SSH_PORT }} -o StrictHostKeyChecking=no" \
+          rsync -avz \
+          -e "ssh -p ${{ secrets.SERVER_SSH_PORT }}" \
+          --no-times \
           --delete ./build/ \
           ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOST }}:/var/www/apps/style-guide/
