@@ -35,4 +35,7 @@ jobs:
         run: ssh-keyscan -H -p ${{ secrets.SERVER_SSH_PORT }} ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
 
       - name: Deploy with rsync
-        run: rsync -avz --delete ./build/ ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOST }}:/var/www/apps/style-guide/
+        run: |
+          rsync -avz -e "ssh -p ${{ secrets.SERVER_SSH_PORT }} \
+          --delete ./build/ \
+          ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOST }}:/var/www/apps/style-guide/
