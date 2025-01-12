@@ -42,7 +42,7 @@ const config: Config = {
           showLastUpdateTime: true,
           routeBasePath: '/',
           editUrl:
-            'https://github.com/dshtefan/style-guide',
+            'https://github.com/dshtefan/style-guide/tree/main/',
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -71,7 +71,7 @@ const config: Config = {
           label: 'Руководство',
         },
         {
-          href: 'https://github.com/dshtefan/style-guide',
+          href: 'https://github.com/dshtefan/style-guide/tree/main/',
           label: 'GitHub',
           position: 'right',
         },
