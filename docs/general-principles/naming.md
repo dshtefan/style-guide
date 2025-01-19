@@ -39,7 +39,7 @@ sidebar_position: 2
     export default UserProfile;
     ```
 
-## Использование camelCase, PascalCase и snake_case
+## Использование camelCase, PascalCase, snake_case и kebab-case
 
 ### Когда применять каждую конвенцию
 
@@ -67,11 +67,17 @@ sidebar_position: 2
     };
     ```
 
-- **snake_case:** Используется для **файлов** или **констант**.
+- **snake_case:** Используется для **констант**.
     ```tsx
     const API_KEY = "your-api-key";
 
-    // Файл: user_profile.tsx
+    // Файл: user-profile.tsx
+    ```
+
+- **kebab-case:** Используется для именования **папок** и **файлов**.
+    ```tsx
+    // Файл: user-profile.tsx
+    const API_KEY = "your-api-key";
     ```
 
 ### Примеры правильного и неправильного именования
