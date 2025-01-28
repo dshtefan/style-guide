@@ -114,6 +114,12 @@ const config: Config = {
       darkTheme: prismThemes.oneDark,
     },
   } satisfies Preset.ThemeConfig,
+
+  plugins: [
+    ['docusaurus-plugin-yandex-metrica', {
+      counterID: '99698837',
+    }],
+  ]
 };
 
 export default config;
